@@ -1,0 +1,21 @@
+---
+- name: "ansible playbook for deploy docker compose"
+  hosts: localhost
+  tasks:
+    - name: "remove container"
+      command: docker compose down
+    
+    - name: "remove database image"
+      command: docker rmi mysql:5.7
+      ignore_errors: yes
+
+    - name: "remove phpmyadmin image"
+      command: docker rmi phpmyadmin/phpmyadmin
+      ignore_errors: yes
+    
+    - name: "remove website image"
+      command: docker rmi aminabaza/event_management
+      ignore_errors: yes
+    
+    - name: "Build docker compose"
+      command: docker compose up -d

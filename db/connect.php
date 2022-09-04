@@ -1,9 +1,9 @@
 <?php
 
-$servername = "localhost";
+$servername = "webdb";
 $username = "root";
 $password = "";
-$db = "eventmgmt";
+$db = "event_mangement";
 
 // Create connection
 $con = mysqli_connect($servername, $username, $password,$db);
