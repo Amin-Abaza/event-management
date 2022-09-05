@@ -25,6 +25,8 @@ services:
       context: .
       dockerfile: Dockerfile
     image: aminabaza/event_management
+    volumes:
+      - .:/var/www/html/
     ports:
       - 9000:80
 
