@@ -1,4 +1,4 @@
-resource "aws_security_group" "ubuntu_SG" {
+resource "aws_security_group" "allow_ports" {
     ingress {
         description = "allow ssh ports"
         from_port        = 22
@@ -52,8 +52,7 @@ resource "aws_key_pair" "generated_key" {
     key_name   = "event-key"
     public_key = var.public_key
 
-    provisioner "local-exec" { # Create "event-Key.pem" to your computer!!
-    command = "echo '${tls_private_key.pk.private_key_pem}' > /home/aabaza/Github/event-management/terraform/event-key.pem && chmod 400 /home/aabaza/Github/event-management/terraform/event-key.pem"
-}
-
+    provisioner "local-exec" { # Create "event-key.pem" to your computer!!
+    command = "echo '${tls_private_key.pk.private_key_pem}' > /home/aabaza/Github/event-management/terraform/event-key.pem && chmod 400 /home/aabaza/Github/event-management/terraform/event-key.pem "
+    }
 }
